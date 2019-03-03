@@ -1,0 +1,100 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.container {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.section-left,
+.section-right {
+    display: inline-block;
+    height: 97.5%;
+    margin: 10px;
+    vertical-align: middle;
+    width: 45%;
+}
+
+.actions {
+    display: inline-block;
+    text-align: center;
+    width: 7%;
+}
+
+textarea {
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    color: #2c3e50;
+    font-family: monospace;
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+    outline: none;
+    padding: 5px;
+    resize: none;
+    width: 100%;
+}
+
+#formatted {
+    border: 1px solid #ddd;
+    font-family: monospace;
+    font-size: 14px;
+    height: 100%;
+    overflow: scroll;
+    padding: 5px;
+}
+
+#format {
+    background: #7f8c8d;
+    border-radius: 5px;
+    bottom: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    outline: none;
+    padding: 10px 30px;
+}
+
+#format:hover {
+    background: #95a5a6;
+}
+
+.object .property,
+.array .property {
+    padding-left: 20px;
+}
+
+.array > .object {
+    padding-left: 20px;
+}
+
+.key + .object,
+.key + .array {
+    display: inline;
+}
+
+.key {
+    color: #2c3e50;
+}
+
+.string {
+    color: #27ae60;
+}
+
+.other {
+    color: #e74c3c;
+}
+
+.boolean {
+    color: #f39c12;
+}
+
+.null {
+    color: #95a5a6;
+}
