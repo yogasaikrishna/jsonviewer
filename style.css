@@ -61,17 +61,36 @@ textarea {
     padding: 10px 30px;
 }
 
+#formatted > .object {
+		padding-left: 30px;
+}
+
+#formatted > .property > .object,
+#formatted > .property > .array {
+		padding-left: 15px;
+}
+
+#formatted > .property > .object > .property-type,
+#formatted > .property > .array > .property-type {
+		display: block;
+}
+
 #format:hover {
     background: #95a5a6;
 }
 
+.property-type {
+		color: #bdc3c7;
+		display: none;
+}
+
 .object .property,
 .array .property {
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 .array > .object {
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 .key + .object,
@@ -98,3 +117,26 @@ textarea {
 .null {
     color: #95a5a6;
 }
+
+.toggle {
+		clear: both;
+		cursor: pointer;
+		float: left;
+		margin-right: 15px;
+}
+
+.toggle.closed + .property .property-type {
+		display: inline-block;
+}
+
+.toggle.closed + .property > .object > .open,
+.toggle.closed + .property > .object > .close,
+.toggle.closed + .property > .object .property,
+.toggle.closed + .property > .array > .open,
+.toggle.closed + .property > .array > .close,
+.toggle.closed + .property > .array .property,
+.toggle.closed + .property .toggle {
+		display: none;
+}
+
+

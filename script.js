@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 let btn = document.getElementById('format');
 btn.addEventListener('click', formatJSON);
 // formatJSON();
@@ -27,18 +29,29 @@ function formatJSON() {
     `;
 
     let obj = JSON.parse(value);
-    document.getElementById('formatted').innerHTML = parse(obj);
+		let template = `<div class="toggle open">
+											<i class="fal fa-minus-square"></i>
+										</div>
+										<div class="property">${parse(obj)}</div>`;
+    document.getElementById('formatted').innerHTML = template;
     document.getElementById('input').value = parse(obj, true);
+		setUpHandlers();
 }
 
 function parse(obj, isFormat = false, isArray = false, depth = 0) {
-    let keys = Object.keys(obj), formatted = '';
+    let keys = Object.keys(obj), formatted = '', type, length;
     if (!isArray) {
         if (isFormat) {
             formatted = depth > 1 ? `${getPadding(depth)}{\n` : '{\n';
             depth += 1;
         } else {
-            formatted = '<div class="object"><span>{</span>';
+						type = Array.isArray(obj) ? 'Array': 'Object';
+						length = Object.keys(obj).length;
+            formatted = '<div class="object">';
+						if (type && length) {
+								formatted += `<span class="property-type">${type} {${length}}</span>`;
+						}
+						formatted += '<span class="open">{</span>';
         }
     }
     for (let i = 0; i < keys.length; i++) {
@@ -47,9 +60,16 @@ function parse(obj, isFormat = false, isArray = false, depth = 0) {
                 formatted += `${getPadding(depth)}"${keys[i]}": `;
             }
         } else {
+						if (typeof obj[keys[i]] === 'object' || Array.isArray(obj[keys[i]])) {
+								type = Array.isArray(obj[keys[i]]) ? 'Array': 'Object';
+								length = Object.keys(obj[keys[i]]).length;
+								formatted += `<div class="toggle open" data-type="${type}" data-length="${length}">
+																<i class="fal fa-minus-square"></i>
+															</div>`;
+						}
             formatted += `
                     <div class="property">
-                        <span class="key">"${keys[i]}"<span class="separator">:</span></span>
+                        <span class="key">${keys[i]}<span class="separator">:</span></span>
                 `;
         }
         if (typeof obj[keys[i]] === 'object' && !Array.isArray(obj[keys[i]]) && obj[keys[i]] !== null) {
@@ -61,9 +81,10 @@ function parse(obj, isFormat = false, isArray = false, depth = 0) {
             } else {
                 formatted += `
                         <div class="array">
-                            <span>[</span>
+														<span class="property-type">${type} [${length}]</span>
+                            <span class="open">[</span>
                             ${parse(obj[keys[i]], false, true)}
-                            <span>]</span>
+                            <span class="close">]</span>
                         </div>
                     `;
             }
@@ -110,10 +131,32 @@ function parse(obj, isFormat = false, isArray = false, depth = 0) {
 
     if (!isArray) {
         depth -= 1;
-        formatted += isFormat ? `${getPadding(depth)}}` : '<span>}</span></div>';
+        formatted += isFormat ? `${getPadding(depth)}}` : '<span class="close">}</span></div>';
     }
 
     return formatted;
+}
+
+function setUpHandlers() {
+		let elems = document.getElementsByClassName('toggle');
+		for (let i = 0; i < elems.length; i++) {
+				elems[i].addEventListener('click', toggleProperty);
+		}
+}
+
+function toggleProperty(e) {
+		e.stopPropagation();
+		let elem = e.target.parentElement;
+		if (elem.classList.contains('open')) {
+				elem.classList.remove('open');
+				elem.classList.add('closed');
+				elem.innerHTML = '<i class="fal fa-plus-square"></i>';
+		} else {
+				elem.classList.remove('closed');
+				elem.classList.add('open');
+				elem.innerHTML = '<i class="fal fa-minus-square"></i>';
+		}
+		console.log(elem);
 }
 
 function getPadding(depth) {
