@@ -1,132 +1,138 @@
 html,
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
 }
 
 .container {
-    height: 100%;
-    overflow: hidden;
-    width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
 }
 
 .section-left,
 .section-right {
-    display: inline-block;
-    height: 97.5%;
-    margin: 10px;
-    vertical-align: middle;
-    width: 45%;
+  display: inline-block;
+  height: 97.5%;
+  margin: 10px;
+  vertical-align: middle;
+  width: 45%;
 }
 
 .actions {
-    display: inline-block;
-    text-align: center;
-    width: 7%;
+  display: inline-block;
+  text-align: center;
+  width: 7%;
 }
 
 textarea {
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-    color: #2c3e50;
-    font-family: monospace;
-    font-size: 14px;
-    height: 100%;
-    margin: 0;
-    outline: none;
-    padding: 5px;
-    resize: none;
-    width: 100%;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  color: #2c3e50;
+  font-family: monospace;
+  font-size: 12px;
+  height: calc(100vh - 30px);
+  margin: 0;
+  padding: 5px;
+  resize: none;
+  width: 100vw;
 }
 
 #formatted {
-    border: 1px solid #ddd;
-    font-family: monospace;
-    font-size: 14px;
-    height: 100%;
-    overflow: scroll;
-    padding: 5px;
+  border: 1px solid #ddd;
+  font-family: monospace;
+  font-size: 12px;
+  height: calc(100vh - 30px);
+  overflow: scroll;
+  padding: 5px;
+  width: calc(100vw - 15px);
 }
 
 #format {
-    background: #7f8c8d;
-    border-radius: 5px;
-    bottom: 0;
-    color: #fff;
-    cursor: pointer;
-    font-size: 13px;
-    outline: none;
-    padding: 10px 30px;
+  background: linear-gradient(150deg, #0466c8, #002855);
+  border-radius: 5px;
+  bottom: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  outline: none;
+  padding: 10px 30px;
 }
 
 #formatted > .object {
-		padding-left: 30px;
+  padding-left: 30px;
 }
 
 #formatted > .property > .object,
 #formatted > .property > .array {
-		padding-left: 15px;
+  padding-left: 15px;
 }
 
 #formatted > .property > .object > .property-type,
 #formatted > .property > .array > .property-type {
-		display: block;
+  /* display: block; */
+}
+
+#formatted .property > .array > span.open {
+  /* color: #f77f00; */
 }
 
 #format:hover {
-    background: #95a5a6;
+  background: #002855;
 }
 
 .property-type {
-		color: #bdc3c7;
-		display: none;
+  color: #bdc3c7;
+  display: none;
 }
 
 .object .property,
 .array .property {
-    padding-left: 30px;
+  /* cursor: pointer; */
+  padding-left: 30px;
 }
 
 .array > .object {
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
 .key + .object,
 .key + .array {
-    display: inline;
+  display: inline;
 }
 
 .key {
-    color: #2c3e50;
+  color: #2c3e50;
 }
 
 .string {
-    color: #27ae60;
+  color: #27ae60;
 }
 
 .other {
-    color: #e74c3c;
+  color: #e74c3c;
 }
 
 .boolean {
-    color: #f39c12;
+  color: #f39c12;
 }
 
 .null {
-    color: #95a5a6;
+  color: #95a5a6;
 }
 
 .toggle {
-		clear: both;
-		cursor: pointer;
-		float: left;
-		margin-right: 15px;
+  color: #cfd2cd;
+  clear: both;
+  cursor: pointer;
+  float: left;
+  margin-right: 15px;
 }
 
 .toggle.closed + .property .property-type {
-		display: inline-block;
+  display: inline-block;
 }
 
 .toggle.closed + .property > .object > .open,
@@ -136,7 +142,42 @@ textarea {
 .toggle.closed + .property > .array > .close,
 .toggle.closed + .property > .array .property,
 .toggle.closed + .property .toggle {
-		display: none;
+  display: none;
 }
 
+.tabbed,
+.tab-content,
+.tab-body {
+  height: 100vh;
+  width: 100vw;
+}
 
+.tabbed .tab-body {
+  display: none;
+}
+
+.tabbed .tab-body.active {
+  display: block;
+}
+
+.tabs-header .tab {
+  border-radius: 5px 5px 0 0;
+  display: inline-flex;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 5px 5px 0 5px;
+  padding: 5px 10px;
+}
+
+.tab.active {
+  background: linear-gradient(150deg, #0466c8, #002855);
+}
+
+.tab.active a {
+  color: #fff;
+}
+
+.tab a {
+  text-decoration: none;
+}

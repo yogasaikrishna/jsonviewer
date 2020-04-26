@@ -1,0 +1,32 @@
+{
+  "name": "jsonviewer",
+  "version": "1.0.0",
+  "description": "JSON Formatter and Tree View",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flow": "flow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yogasaikrishna/jsonviewer.git"
+  },
+  "author": "Yoga Sai Krishna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yogasaikrishna/jsonviewer/issues"
+  },
+  "homepage": "https://github.com/yogasaikrishna/jsonviewer#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^5.15.1",
+    "eslint-config-google": "^0.12.0",
+    "flow-bin": "^0.94.0"
+  },
+  "dependencies": {
+    "csslint": "^1.0.5",
+    "prettier": "^1.16.4",
+    "prettier-eslint-cli": "^4.7.1"
+  }
+}

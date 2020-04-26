@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>JSON Viewer</title>
-    <link href="style.css" rel="stylesheet">
-		<script defer src="vendor/all.js"></script>
-</head>
-<body>
+    <link href="style.css" rel="stylesheet" />
+    <script defer src="vendor/all.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="tabbed">
+        <div class="tabs-header">
+          <div class="tab tab-text active" onclick="showTab('text')"><a href="javascript:void(0)">Text</a></div>
+          <div class="tab tab-viewer" onclick="showTab('viewer')"><a href="javascript:void(0)">Viewer</a></div>
+        </div>
 
-<div class="container">
-    <div class="section-left">
-        <textarea rows="25" cols="20" id="input"></textarea>
+
+        <div class="tab-content">
+          <div class="tab-body active" id="text">
+            <textarea rows="25" cols="20" id="input"></textarea>
+          </div>
+
+          <div class="tab-body" id="viewer">
+            <div id="formatted"></div>
+          </div> 
+        </div>
+      </div>
     </div>
-    <div class="actions">
-        <button id="format">Format</button>
-    </div>
-    <div class="section-right">
-        <div id="formatted"></div>
-    </div>
-</div>
-<script src="script.js"></script>
-</body>
+    <script src="script.js" type="text/javascript"></script>
+  </body>
 </html>
